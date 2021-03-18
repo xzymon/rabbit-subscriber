@@ -1,12 +1,13 @@
 package com.xzymon.rabbitsubscriber.config;
 
 import com.xzymon.rabbitsubscriber.credentials.*;
-import com.xzymon.rabbitsubscriber.fun.MyFunClass;
+import com.xzymon.rabbitsubscriber.credentials.decryptor.BackwardsLineDecryptor;
+import com.xzymon.rabbitsubscriber.credentials.decryptor.Decryptor;
+import com.xzymon.rabbitsubscriber.credentials.mapper.BinaryDataMapper;
+import com.xzymon.rabbitsubscriber.credentials.mapper.SimpleDataMapper;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 
 @Configuration
@@ -17,7 +18,7 @@ public class CredentialsConfig {
 
 	@Bean
 	Decryptor decryptor() {
-		return new SimpleDecryptor();
+		return new BackwardsLineDecryptor();
 	}
 
 	@Bean

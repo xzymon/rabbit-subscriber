@@ -1,4 +1,4 @@
-package com.xzymon.rabbitsubscriber.credentials;
+package com.xzymon.rabbitsubscriber.credentials.mapper;
 
 import java.io.*;
 import java.util.HashMap;

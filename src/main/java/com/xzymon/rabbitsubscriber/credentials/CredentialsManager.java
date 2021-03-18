@@ -1,5 +1,7 @@
 package com.xzymon.rabbitsubscriber.credentials;
 
+import com.xzymon.rabbitsubscriber.credentials.decryptor.Decryptor;
+import com.xzymon.rabbitsubscriber.credentials.mapper.BinaryDataMapper;
 import org.springframework.core.io.Resource;
 
 import java.io.IOException;
