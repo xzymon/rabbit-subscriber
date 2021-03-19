@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This is only a minimal fragment of host.xml file. It contains only servers node - which contains properties to be set for server "server-one" - the place to deploy application -->
+<!-- To use on a production JBoss EAP 7.2 set "server" node based on the content of the node presented below -->
+<host xmlns="urn:jboss:domain:8.0" name="master">
+    <servers>
+        <server name="server-one" group="main-server-group" auto-start="false">
+            <system-properties>
+                <property name="rabbitsubscriber.encrypted.config.location" value="classpath:/server-one/rabbit-subscriber.encrypted.properties" boot-time="true" />
+                <property name="rabbitsubscriber.config.location" value="classpath:/server-one/rabbit-subscriber.properties" boot-time="true" />
+            </system-properties>
+            <jvm name="one" debug-enabled="false">
+                <jvm-options>
+                    <option value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1000" />
+                </jvm-options>
+            </jvm>
+        </server>
+        <server name="server-two" group="main-server-group" auto-start="false">
+            <jvm name="default" />
+            <socket-bindings port-offset="150" />
+        </server>
+        <server name="server-three" group="other-server-group" auto-start="false">
+            <jvm name="default" />
+            <socket-bindings port-offset="300" />
+        </server>
+    </servers>
+</host>
