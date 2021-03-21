@@ -3,6 +3,7 @@ package com.xzymon.rabbitsubscriber.config;
 import com.xzymon.rabbitsubscriber.credentials.*;
 import com.xzymon.rabbitsubscriber.fun.MyFunClass;
 import com.xzymon.rabbitsubscriber.receiver.RawMessageReceiver;
+import com.xzymon.rabbitsubscriber.repository.MessageRepository;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -70,8 +71,8 @@ public class RabbitConfiguration {
 	}
 
 	@Bean
-	MessageListener messageListener() {
-		return new RawMessageReceiver();
+	MessageListener messageListener(MessageRepository messageRepository) {
+		return new RawMessageReceiver(messageRepository);
 	}
 
 	@Bean
